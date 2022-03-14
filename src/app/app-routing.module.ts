@@ -5,9 +5,15 @@ import { ContactComponent } from './contact/contact.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+// import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
+  {
+    path:'admin' , loadChildren:()=>import('./admin/admin.module').then(mod=>mod.AdminModule)
+  },
+  {
+    path:'user',loadChildren:()=>import('./user/user.module').then(mod=>mod.UserModule)
+  },
   {
     path:'footer',
     component : FooterComponent
@@ -27,16 +33,16 @@ const routes: Routes = [
   {
     path:'contact',
     component:ContactComponent
-  },
-  {
-    path:"",
-    redirectTo:"home",
-    pathMatch:"full"
-  },
-  {
-    path:'**',
-    component:NotfoundComponent
   }
+  // {
+  //   path:"",
+  //   redirectTo:"home",
+  //   pathMatch:"full"
+  // }
+  // {
+  //   path:'**',
+  //   // component:NotfoundComponent
+  // }
 ];
 
 @NgModule({

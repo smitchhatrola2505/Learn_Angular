@@ -13,6 +13,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CustomDirective } from './custom.directive';
+import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { CustomDirective } from './custom.directive';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

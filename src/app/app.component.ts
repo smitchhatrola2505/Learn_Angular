@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { __asyncValues } from 'tslib';
+import { UserDataService } from './user-data.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,14 @@ import { __asyncValues } from 'tslib';
 })
 export class AppComponent {
   title = 'angular_Learn';
+  
+  
+  // data = "";
+  // constructor(private user:UserDataService){
+  //   let d = this.user.getData() ;
+  //   this.data = d.name;
+
+  // }
   // -- angular interpolation --
 
   // name = 'smit chhatrola';
