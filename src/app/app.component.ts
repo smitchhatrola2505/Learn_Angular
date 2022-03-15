@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup,Validators} from '@angular/forms';
 import { __asyncValues } from 'tslib';
-import { UserDataService } from './user-data.service';
 
 
 @Component({
@@ -11,6 +11,22 @@ import { UserDataService } from './user-data.service';
 export class AppComponent {
   title = 'angular_Learn';
   
+  loginForm = new FormGroup({
+
+     email:new FormControl('',Validators.required),
+     password:new FormControl('',Validators.required)
+       
+    })
+  
+  
+  
+  
+  data:any = '';
+  on(login:any){
+    console.log(login);
+    this.data = login;
+  }
+
   
   // data = "";
   // constructor(private user:UserDataService){
