@@ -1,0 +1,355 @@
+-->Constuctor : 
+	Dependency Inject In constroction.
+ngOninit(): 
+	We use decoratore Like @input() ...
+	
+-->pagination: 
+ 
+ install-->npm i  ngx-pagination
+ module.ts --> import: NgxPaginationModule
+ 
+-->git command : ingnor file = go to cmd , type nul > gitignore
+
+-->Observables & Subscribe :
+	-Observables are lazy, collections of multiple values over time.
+	-Observables are cancelable
+
+-->
+
+angular : 
+      open source web application framework, Angular is the latest version of angularjs(old) both are diffrent.
+      Develpo By : Google (14 September 2016)
+
+install : npm installa -g @angular/cli
+          Make a new projects : ng new (name)
+          Run : ng serve -o
+
+package.json : when you create projects first of create this file, all dependencies & devdependencies,script,filename,version 
+node_modules : dependencies & devdependencies install in hear.
+src : 95% coding you can their
+environments :
+assets : img,icon,font we store hear.
+index.html : html entrey point.
+main.js : first js file which intract in html file.
+styles.css : globly styles
+app : routing modules
+
+component : is a peace of code.
+4 file : TS,HTML,CSS,TESTING
+Edit component :
+Make new component : ng g(generate) c(component) name
+
+module : ng g m user
+
+Function Call : 
+
+  <button (click)="getname()">get my name</button>
+
+Events : can we use two event together ? 
+click ,blur
+keyup : keyup.enter ,keyup.space
+keydown : keydown.enter ,keydown.space
+mouse : mouseover,mouseleave
+
+  <h1>get value from user</h1> 
+  <input type="text" #box />
+  <button (click)="getVal(box)">Ok</button>
+  or..
+  <input type="text" (keyup.enter)="getVal($event.target)" />
+  <h2>{{current}}</h2>
+
+Property Binding : 
+  both are same work
+
+  <input type="text" [value]="name">
+  <br><br>
+  <input type="text" value="{{name}}">
+
+diffrent is : 
+
+  <input type="text" [disabled]="disabled" [value]="name">
+  <br><br>
+  <input type="text" disabled={{disabled}} value={{name}}>
+  <button (click)="box()">Done</button>
+
+conditions statement : #ifblock, #elseBlock
+
+conditions in bolean :
+
+    <h1>If Else Conditions</h1>
+    <h1 *ngIf = "show else elseBlock">Smit Patel</h1>
+
+    <ng-template #elseBlock>
+    <h1>S Patel</h1>
+    </ng-template>
+
+conditions in string :
+
+  <h1 *ngIf = "show=='n' else elseBlock">Smit Patel</h1>
+
+  <ng-template #elseBlock>
+  <h1>Smit chhatrola/h1>
+  </ng-template>
+
+  <ng-template [ngIf]="show == 'red' ">red</ng-template>
+  <ng-template [ngIf]="show == 'green' ">green</ng-template>
+
+switch case :
+
+  <div [ngSwitch]="color"> 
+      <h2 *ngSwitchCase="'red'">Red Colour</h2>
+      <h2 *ngSwitchCase="'green'">Green Colour</h2>
+      <h2 *ngSwitchCase="'blue'">Blue Colour</h2>
+  </div>
+
+For Loop :
+  
+  <tr *ngFor = "let name of data">
+          <td>{{name.name}}</td>
+          <td>{{name.age}}</td>
+          <td>{{name.email}}</td>
+  </tr>
+
+Form : 
+  ngForm , (ngSubmit) , ngModel
+
+Style Binding : 
+  <h1 [Style.color]="err?'red':'green'">ok</h1>
+
+Boostrap Add : 
+  ng add @ng-bootstrap/ng-bootstrap
+
+Material Add : is a prebuild UI component library.
+  ng add @angular/material
+
+  go to browser and copy component code .
+
+Pass Data Parent to child component :
+
+  step : Parent --> Child
+  App.ts : data = "smit patel";
+  App.html : <app-user [name]="data"></app-user>
+  user.ts : @Input() name : any
+  user.html : {{name}}
+
+Reusable Component : 
+  App.ts : data = [{
+    name : 'smit',
+    age : 20,
+    email : "@gmail.com"
+  },
+  {
+    name : 'sahil',
+    age : 20,
+    email : "@gmail.com"
+  },
+  {
+    name : 'Patel',
+    age : 20,
+    email : "@gmail.com"
+  }
+  ];
+  App.html : <div *ngFor = "let user of data"><app-user [name]="user"></app-user></div>
+  user.ts : @Input() name : any
+  user.html : {{name.age}}
+
+  step : Parent --> Child
+
+  user.ts : @Output() data = new EventEmitter<string>(); 
+              add(value:string){
+                this.data.emit(value);
+                }
+  user.html : <div class="child">
+              <h2>child class</h2>
+              <label for="datainput">Enter Data:</label>
+              <input type="text" id="datainput" #data>
+              <button (click)="add(data.value)">add</button><br><br>
+              </div>
+
+  app.ts : item = [''];
+          add(newI:string){
+            this.item.push(newI);
+          }
+
+  app.html :
+          <div class="parent">
+              <h2>Parent class</h2>
+              <ul><li *ngFor="let it of item">{{it}}</li></ul>
+              <app-footer (data)="add($event)"></app-footer>
+          </div>
+
+Pipe :
+
+  {{name | lowercase}}
+  {{name | uppercase}}
+  {{name | titlecase}}
+  today = Date.now(); //ts file
+  {{today | date:'fullDate'}} //html file
+  {{name | slice :2:5}} 
+  {{val | currency : 'USD'}}
+  {{val | currency : 'INR'}}
+
+routing : 
+
+  ng g m app-routing --flat --module=app
+
+routing file : in routers array make array object
+
+  [{
+    path : ' ' ,
+    component :
+  },
+  {
+    path : ' ',
+    component : 
+  },
+  {
+    path:"",
+    redirectTo:'home',
+    pathMatch : 'full'
+  }, //by defualt page 
+  {
+    path:'**',
+    component:
+  } //not found page
+  ];
+
+  & go to link and add : routerLink = '/'
+
+Directive : ng g d(Directive) name
+
+  html file : 
+    <h1 appDirectiveName> abc </h1>
+  Directive ts file : 
+    constructor(private el : ElementRef) {
+      el.nativeElement.style.color="red";
+    }
+
+service : use to more than 2 Component to share data each other 
+
+   ng g s(service) name 
+
+   service.ts --> get(){
+     return{
+       name:"smit",
+       age : 30  
+     }
+   }
+   in ts file -->
+
+   constructor(private user:UserDataService){
+      consol.warn(this.user.get());
+   }
+
+API Call In Angular : 
+
+  service.ts -->
+
+    constructor(private http : HttpClient) { }
+    getD(){
+      let url = "https://jsonplaceholder.typicode.com/todos/" ;
+      return this.http.get(url);
+    }
+
+    ts -->
+    constructor(private user : UserDataService){ // inject your services 
+      this.user.getD().subscribe(data=>{
+        console.warn(data);
+      })
+    }	
+
+data Binding From Api Data :
+  ts file-->
+    userData:any = [];
+      constructor(private user : UserDataService){
+        this.user.getData().subscribe(data=>{
+          this.userData = data;
+          console.log(data);
+        })
+      }
+
+model : 
+
+  we use model in validation
+
+  ts file ---> 
+
+  interface details{
+    name:string,
+    pwd : number,
+    status  : boolean
+  }
+
+getData(){
+   name : "smit";
+   pwd : 1223 ; 
+   status : true ;
+  }
+
+Recap routing and module :
+
+  make a module(ng g m name) : welcome.module.ts   -->export component
+  app.module.ts -- > import module
+  
+  you can use also router link in app-html file .
+
+Routing Module : 
+
+   make a routing module(ng g m name --routing) :
+
+   --> import in app-module file
+   --> path & component set in admin-router-file note:remove the not found page component in app routing file
+   -->show in app -html file 
+
+Group Routing : 
+   
+  const routes: Routes = [
+    {
+      path:'user',children : [  // hear change children path name
+        {path:'list',component:ListComponent},
+        {path:'login',component:LoginComponent}
+      ]
+    }
+  ];
+
+Lazy loading : //when you click than they import module
+
+  --> app-routing-module.ts
+  {
+    path:'admin' , loadChildren:()=>import('./admin/admin.module').then(mod=>mod.AdminModule)
+  }
+  
+  --> app-html
+    <a routerLink = 'admin/login'>login</a><br>
+    <a routerLink = 'admin/list'>list</a><br>
+
+  -->Admin Routing file  
+    const routes: Routes = [
+          {path:'list',component:ListComponent},
+          {path:'login',component:LoginComponent}
+    ];
+
+Lazy loading Component :  ????
+
+Forms :
+    
+    1).Reactive Form : all controls in component.ts file
+      
+       import : ReactiveFormmodule in module.ts file        
+               
+
+    2).Template Driven Form : all controls in component.html file
+
+        <form #login = "ngForm" (ngSubmit)="on(login.value)">
+           <input type="text" ngModel name = "name">Name <br><br>
+          <input type="password" ngModel name = "password">Password <br><br>
+        <button type="submit">Login</button>
+        </form>
+        {{data.name}}
+		
+				*** material Ui ***
+
+-> Button : MatButtonModule >> mat-button, mat-raised-button, mat-stroked-button, mat-flat-button
+-> Typography :             >> class="mat-display-4" mat-headline, mat-title
+
+		
