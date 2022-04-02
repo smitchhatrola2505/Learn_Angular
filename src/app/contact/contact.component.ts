@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
+  data: any = '';
+  on(login: any) {
+    console.log(login);
+    this.data = login;
+  }
   constructor() { }
 
   ngOnInit(): void {

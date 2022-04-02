@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CustomDirective } from './custom.directive';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import {MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

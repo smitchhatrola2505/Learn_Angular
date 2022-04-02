@@ -1,1 +1,29 @@
 <p>contact works!</p>
+
+<!-- 
+<h1 appCustom>Smit Chhatrola</h1> -->
+<h3>Admin</h3>
+<a routerLink = 'admin/login'>login</a><br>
+<a routerLink = 'admin/list'>list</a><br>
+<br>
+
+<h3>User</h3>
+<a routerLink = 'user/login'>login</a><br>
+<a routerLink = 'user/list'>list</a><br>
+<br>
+{{email.dirty}}
+<form #login="ngForm" (ngSubmit)="on(login.value)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" #email="ngModel" ngModel required minlength = "2" class="form-control" name="email" placeholder="Enter email">
+      <div *ngIf = "email.touched && email.invalid" class="alert">
+        <span *ngIf="email.errors?.['required']">Enter Valid Email</span>
+        <span *ngIf="email.errors?.['minlength']">Enter Right Email</span>
+      </div>    
+    </div> 
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" #pwd="ngModel" ngModel class="form-control" name="pwd" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> 

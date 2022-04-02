@@ -11,21 +11,6 @@ import { __asyncValues } from 'tslib';
 export class AppComponent {
   title = 'angular_Learn';
   
-  loginForm = new FormGroup({
-
-     email:new FormControl('',Validators.required),
-     password:new FormControl('',Validators.required)
-       
-    })
-  
-  
-  
-  
-  data:any = '';
-  on(login:any){
-    console.log(login);
-    this.data = login;
-  }
 
   
   // data = "";
